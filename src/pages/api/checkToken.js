@@ -1,53 +1,15 @@
-import mongoose from "mongoose";
-
-const connectMongoDB = async () => {
-  try {
-    await mongoose.connect(
-      "mongodb+srv://ppqita:santri@ppqitadb.4jtlspc.mongodb.net/portal-siswa",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
-  } catch (error) {
-    console.log(error);
-  }
-};
+import Users from "@/models/users";
+import { connectMongoDB } from "@/db/mongoDB";
+import { getCookies, getCookie, setCookie, deleteCookie } from "cookies-next";
 
 connectMongoDB();
-
-const Users = mongoose.model(
-  "user", // akan jadi collection dengan nama users ketika disubmit di db
-  new mongoose.Schema({
-    id: {
-      type: String,
-      require: true,
-    },
-    name: {
-      type: String,
-      require: true,
-    },
-    password: {
-      type: String,
-      require: true,
-    },
-    nis: {
-      type: String,
-      require: true,
-    },
-    token: {
-      type: String,
-      default: "",
-    },
-  })
-);
 
 export default async function handler(req, res) {
   try {
     if (req.method !== "POST") {
       return res
         .status(405)
-        .json({ error: true, message: "method tidak diijinkan" });
+        .json({ error: true, message: "mehtod tidak diijinkan" });
     }
 
     const { token } = req.body;
@@ -62,6 +24,8 @@ export default async function handler(req, res) {
     console.log("user: ", user);
 
     if (!user || !user.nis) {
+      deleteCookie("token", { req, res });
+
       return res.status(400).json({
         error: true,
         message: "token tidak valid",
@@ -69,7 +33,9 @@ export default async function handler(req, res) {
     }
 
     // kasih tahu client (hanya data yg diperbolehkan)
-    return res.status(200).json({ id: user.id, nis: user.nis });
+    return res
+      .status(200)
+      .json({ id: user.id, nis: user.nis, name: user.name });
   } catch (error) {
     console.log("error:", error);
     res

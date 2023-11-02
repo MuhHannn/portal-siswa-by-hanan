@@ -1,102 +1,63 @@
-import mongoose from "mongoose";
-import { v4 as uuid } from "uuid";
-
-const connectMongoDB = async () => {
-  try {
-    await mongoose.connect(
-      "mongodb+srv://ppqita:santri@ppqitadb.76fharf.mongodb.net/portal-siswa",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
-  } catch (error) {
-    console.log(error);
-  }
-};
+import { v4 as uuid } from 'uuid';
+import Users from '@/models/users';
+import { connectMongoDB } from '@/db/mongoDB';
 
 connectMongoDB();
-
-const Users = mongoose.model(
-  "user", // akan jadi collection dengan nama users ketika disubmit di db
-  new mongoose.Schema({
-    id: {
-      type: String,
-      require: true,
-    },
-    name: {
-      type: String,
-      require: true,
-    },
-    password: {
-      type: String,
-      require: true,
-    },
-    nis: {
-      type: String,
-      require: true,
-    },
-    token: {
-      type: String,
-      default: "",
-    },
-  })
-);
 
 export default async function handler(req, res) {
   try {
     // pengecekan method
-    if (req.method !== "POST") {
+    if (req.method !== 'POST') {
       return res
         .status(405)
-        .json({ error: true, message: "mehtod tidak diijinkan" });
+        .json({ error: true, message: 'mehtod tidak diijinkan' });
     }
 
     const { name, nis, password } = req.body;
     // validasi dari client (ada atau tidak)
     if (!name) {
-      return res.status(400).json({ error: true, message: "tidak ada Nama" });
+      return res.status(400).json({ error: true, message: 'tidak ada Nama' });
     }
 
     if (!nis) {
-      return res.status(400).json({ error: true, message: "tidak ada NIS" });
+      return res.status(400).json({ error: true, message: 'tidak ada NIS' });
     }
 
     if (!password) {
       return res
         .status(400)
-        .json({ error: true, message: "tidak ada Password" });
+        .json({ error: true, message: 'tidak ada Password' });
     }
 
     // validasi sesuai kreteria atau tidak
     if (name.length < 3 || name.length >= 20) {
       return res.status(400).json({
         error: true,
-        message: "name harus diantar 3 sampai 20 karakter",
+        message: 'name harus diantar 3 sampai 20 karakter',
       });
     }
 
     if (nis.length !== 5) {
       return res.status(400).json({
         error: true,
-        message: "nis harus 5 karakter",
+        message: 'nis harus 5 karakter',
       });
     }
 
     if (password.length < 6 || password.length >= 10) {
       return res.status(400).json({
         error: true,
-        message: "password harus diantar 6 sampai 10 karakter",
+        message: 'password harus diantar 6 sampai 10 karakter',
       });
     }
     // cek apakah id atau nis sudah digunakan
     const user = await Users.findOne({ nis });
-    console.log("user: ", user);
+    console.log('user: ', user);
 
     if (user && user.nis) {
       return res.status(400).json({
         error: true,
-        message: "nis sudah pernah didaftarkan",
+        message: 'nis sudah pernah didaftarkan',
       });
     }
 
@@ -112,9 +73,9 @@ export default async function handler(req, res) {
     // kasih tahu client (hanya data yg diperbolehkan)
     return res.status(201).json({ id: users.id, nis: users.nis });
   } catch (error) {
-    console.log("error:", error);
+    console.log('error:', error);
     res
       .status(500)
-      .json({ error: true, message: "ada masalah harap hubungi developer" });
+      .json({ error: true, message: 'ada masalah harap hubungi developer' });
   }
 }
