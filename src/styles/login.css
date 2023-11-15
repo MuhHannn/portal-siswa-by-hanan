@@ -1,46 +1,36 @@
+/* Login.css */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0; /* Ganti dengan warna latar belakang yang Anda inginkan */
-  font-family: Arial, sans-serif;
+  font-family: "DM Sans", sans-serif; /* Ganti dengan font yang sesuai */
 }
 
 .card {
-  background: #fff;
+  background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 400px;
   text-align: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
 }
 
 h1 {
-  margin-bottom: 20px;
-  color: #2b3674; /* Ganti dengan warna teks yang Anda inginkan */
+  color: #4318ff; /* Ganti dengan warna teks yang Anda inginkan */
+  font-size: 24px;
 }
 
 .summary {
-  color: #888;
+  color: #333; /* Ganti dengan warna teks yang Anda inginkan */
   font-size: 16px;
-  font-weight: 400;
-  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 .fieldInput {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.label {
-  color: #333;
-  font-size: 16px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 .input {
@@ -48,16 +38,10 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 14px;
   width: 95%;
-  font-size: 14px;
+  font-size: 16px;
   background: transparent;
-  color: #333;
-}
-
-.fieldButton {
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-  align-items: center;
+  color: #333; /* Ganti dengan warna teks yang Anda inginkan */
+  margin-top: 5px;
 }
 
 .buttonPrimary {
@@ -69,8 +53,7 @@ h1 {
   font-size: 16px;
   font-weight: 600;
   padding: 12px 24px;
-  transition: background-color 0.3s;
-  margin-bottom: 5%;
+  margin-top: 20px;
 }
 
 .buttonPrimary:hover {
