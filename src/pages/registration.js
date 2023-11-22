@@ -1,13 +1,13 @@
-import styles from '@/styles/Login.module.css';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+import styles from "@/styles/registration.css";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Daftar() {
   const router = useRouter();
 
-  const [name, setName] = useState('');
-  const [nis, setNis] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [nis, setNis] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div className={`${styles.container} ${dmSans.className}`}>
@@ -58,31 +58,31 @@ export default function Daftar() {
           className={styles.buttonPrimary}
           onClick={async () => {
             const data = { name, nis, password };
-            console.log('click daftar by: ', data);
+            console.log("click daftar by: ", data);
 
             try {
-              const res = await fetch('/api/registration', {
-                method: 'POST', // Corrected the typo in 'method'
+              const res = await fetch("/api/registration", {
+                method: "POST", // Corrected the typo in 'method'
                 body: JSON.stringify(data), // Assuming 'data' is an object that you want to send as JSON
                 headers: {
-                  'Content-Type': 'application/json', // Specifying the content type as JSON
+                  "Content-Type": "application/json", // Specifying the content type as JSON
                 },
               });
 
               const responseData = await res.json(); // Mendapatkan data JSON dari respons
               console.log(responseData);
-              alert('Data sudah sukses didaftarkan');
+              alert("Data sudah sukses didaftarkan");
 
               if (res.ok) {
                 // Periksa apakah respons memiliki status code 200 (OK)
-                router.push('/login');
+                router.push("/login");
               } else {
-                console.error('Gagal melakukan permintaan:', res.data);
-                alert('Data gagal didaftarkan');
+                console.error("Gagal melakukan permintaan:", res.data);
+                alert("Data gagal didaftarkan");
               }
             } catch (error) {
-              console.log('error: ', error);
-              alert('Terjadi Kesalahan, harap hubungi team support');
+              console.log("error: ", error);
+              alert("Terjadi Kesalahan, harap hubungi team support");
             }
           }}
         >

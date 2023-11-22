@@ -1,12 +1,12 @@
-import styles from '@/styles/Login.module.css';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import styles from "@/styles/login.css";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const router = useRouter();
 
-  const [nis, setNis] = useState('');
-  const [password, setPassword] = useState('');
+  const [nis, setNis] = useState("");
+  const [password, setPassword] = useState("");
   const [isKeepLogin, setKeepLogin] = useState(false);
 
   return (
@@ -46,7 +46,7 @@ export default function Login() {
               onChange={(e) => {
                 console.log(e.target.checked);
                 let isChecked = e.target.checked;
-                localStorage.setItem('keepLogin', isChecked);
+                localStorage.setItem("keepLogin", isChecked);
                 setKeepLogin(isChecked);
               }}
             ></input>
@@ -57,37 +57,37 @@ export default function Login() {
           className={styles.buttonPrimary}
           onClick={async (e) => {
             const data = { nis, password, isKeepLogin };
-            console.log('click daftar by: ', data);
+            console.log("click daftar by: ", data);
 
             try {
-              const res = await fetch('/api/login', {
-                method: 'POST', // Corrected the typo in 'method'
+              const res = await fetch("/api/login", {
+                method: "POST", // Corrected the typo in 'method'
                 body: JSON.stringify(data), // Assuming 'data' is an object that you want to send as JSON
                 headers: {
-                  'Content-Type': 'application/json', // Specifying the content type as JSON
+                  "Content-Type": "application/json", // Specifying the content type as JSON
                 },
               });
               const responseData = await res.json();
               if (res.ok) {
                 // Periksa apakah respons memiliki status code 200 (OK)
                 // Mendapatkan data JSON dari respons
-                console.log('responseData: ', responseData); //ex: {token: 'Id2Qs257T0', isKeepLogin: true}
-                localStorage.setItem('keepLogin', responseData.isKeepLogin);
+                console.log("responseData: ", responseData); //ex: {token: 'Id2Qs257T0', isKeepLogin: true}
+                localStorage.setItem("keepLogin", responseData.isKeepLogin);
 
                 if (!responseData.isKeepLogin) {
-                  sessionStorage.setItem('token', responseData.token);
+                  sessionStorage.setItem("token", responseData.token);
                 }
 
-                alert('sukses login');
-                router.push('/dashboard');
+                alert("sukses login");
+                router.push("/dashboard");
               } else {
-                console.error('Gagal melakukan permintaan:', res.status);
+                console.error("Gagal melakukan permintaan:", res.status);
                 console.log(responseData);
                 alert(responseData.message);
               }
             } catch (error) {
-              console.log('error: ', error);
-              alert('Terjadi Kesalahan, harap hubungi team support');
+              console.log("error: ", error);
+              alert("Terjadi Kesalahan, harap hubungi team support");
             }
           }}
         >

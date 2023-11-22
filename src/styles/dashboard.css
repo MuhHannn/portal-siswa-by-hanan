@@ -1,59 +1,65 @@
-/* dashboard.css */
+/* styles.css atau nama file CSS Anda */
+
+/* Gaya untuk kontainer utama */
 .container {
   display: flex;
-  font-family: "DM Sans", sans-serif;
+  justify-content: space-between;
+  align-items: flex-start; /* Atur sesuai kebutuhan */
 }
 
+/* Gaya untuk sidebar */
 .sidebar {
-  background-color: #333;
-  color: #fff;
-  width: 250px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  width: 250px; /* Atur lebar sidebar sesuai kebutuhan */
+}
+
+/* Gaya untuk konten utama */
+.main-content {
+  flex: 1; /* Agar konten utama mengambil sisa ruang */
   padding: 20px;
 }
 
-.sidebar-header {
-  margin-top: 20px;
-  padding: 0 20px;
-}
-
-.sidebar h1 {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li button {
-  background-color: #4318ff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 600;
-  padding: 12px 20px;
-  margin-top: 10px;
-  width: 100%;
-  text-align: left;
-}
-
-li button:hover {
-  background-color: #4318aa;
-}
-
-.user-name {
+/* Gaya untuk header */
+.header {
   font-weight: 700;
   font-size: 28px;
-  margin-top: 20px;
-  padding: 0 16px;
 }
 
-.user-info {
-  display: flex;
-  justify-content: flex-end;
+/* Gaya untuk tombol logout */
+.logout-btn {
+  font-weight: 600; /* Sesuaikan berat teks */
+  padding: 8px 16px; /* Sesuaikan ukuran padding */
+  margin-top: 16px; /* Sesuaikan jarak antar elemen */
+  background-color: #f44336; /* Atur warna latar belakang */
+  color: #fff; /* Atur warna teks */
+  border: none;
+  cursor: pointer;
+}
+
+/* Gaya untuk tabel */
+.table-container {
   width: 100%;
-  padding: 16px;
+  margin-top: 20px; /* Sesuaikan jarak antar elemen */
+}
+
+.table {
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Gaya untuk baris tabel */
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #ddd;
 }

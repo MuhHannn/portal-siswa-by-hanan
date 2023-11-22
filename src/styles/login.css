@@ -1,61 +1,71 @@
-/* Login.css */
+/* styles.css atau nama file CSS Anda */
+
+/* Gaya untuk kontainer utama */
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0; /* Ganti dengan warna latar belakang yang Anda inginkan */
-  font-family: "DM Sans", sans-serif; /* Ganti dengan font yang sesuai */
+  justify-content: center; /* Memusatkan konten */
+  align-items: center; /* Memusatkan konten */
+  height: 100vh; /* Mengisi tinggi seluruh viewport */
 }
 
+/* Gaya untuk card atau kotak login */
 .card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  width: 300px;
   padding: 20px;
-  width: 100%;
-  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
-h1 {
-  color: #4318ff; /* Ganti dengan warna teks yang Anda inginkan */
-  font-size: 24px;
+/* Gaya untuk judul "Sign" */
+.card h1 {
+  text-align: center;
 }
 
+/* Gaya untuk summary */
 .summary {
-  color: #333; /* Ganti dengan warna teks yang Anda inginkan */
-  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Gaya untuk label dan input field */
+.fieldInput {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+/* Gaya untuk input field */
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Gaya untuk checkbox dan teks "Keep Me Logged In" */
+.checkbox-container {
+  display: flex;
+  align-items: center;
   margin-top: 10px;
 }
 
-.fieldInput {
-  margin-top: 20px;
-}
-
-.input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 14px;
-  width: 95%;
-  font-size: 16px;
-  background: transparent;
-  color: #333; /* Ganti dengan warna teks yang Anda inginkan */
-  margin-top: 5px;
-}
-
+/* Gaya untuk tombol sign in */
 .buttonPrimary {
-  background-color: dodgerblue;
-  color: #fff;
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #007bff; /* Atur warna latar belakang sesuai keinginan */
+  color: #fff; /* Atur warna teks */
   border: none;
-  border-radius: 16px;
+  border-radius: 3px;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 12px 24px;
-  margin-top: 20px;
 }
 
 .buttonPrimary:hover {
-  background-color: blue;
+  background-color: #0056b3; /* Ubah warna saat tombol dihover */
 }
