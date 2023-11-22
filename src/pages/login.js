@@ -1,4 +1,4 @@
-import styles from "@/styles/login.css";
+import styles from "@/styles/login.module.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -10,7 +10,7 @@ export default function Login() {
   const [isKeepLogin, setKeepLogin] = useState(false);
 
   return (
-    <div className={`${styles.container} ${dmSans.className}`}>
+    <div className={`${styles.container}`}>
       <div className={styles.card}>
         <h1>Sign</h1>
         <div className={styles.summary}>

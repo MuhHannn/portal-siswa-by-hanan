@@ -1,4 +1,4 @@
-import styles from "@/styles/registration.css";
+import styles from "@/styles/registration.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -10,7 +10,7 @@ export default function Daftar() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className={`${styles.container} ${dmSans.className}`}>
+    <div className={`${styles.container}`}>
       <div className={styles.card}>
         <h1>Daftar</h1>
         <div className={styles.summary}>Masukkan data secara lengkap</div>

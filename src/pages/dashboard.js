@@ -1,4 +1,4 @@
-import styles from "@/styles/dashboard.css";
+import styles from "@/styles/dashboard.module.css";
 import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -68,7 +68,7 @@ export default function Dasbor() {
   }, [router]);
 
   return (
-    <div className={`${styles.container} ${dmSans.className}`}>
+    <div className={`${styles.container}`}>
       <div className={styles.sidebar}>
         <div
           style={{
