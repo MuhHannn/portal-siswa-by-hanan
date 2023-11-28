@@ -57,6 +57,8 @@ export default function Dasbor() {
               }
             );
           }
+        } else {
+           router.push('/login');
         }
       } catch (error) {
         console.log("error: ", error);
